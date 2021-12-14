@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Ionic -PHP CRUD
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list lines = "full"> 
+<ion-item>
+  <ion-label position = "floating"> Year</ion-label>
+  <ion-input [(ngModel)] = "year" type ="text"> </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position = "floating"> Student 1 Marks</ion-label>
+  <ion-input [(ngModel)] = "studentOne" type ="text"> </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position = "floating"> Student 2 Marks</ion-label>
+  <ion-input [(ngModel)] = "studentTwo" type ="text"> </ion-input>
+</ion-item>
+
+<ion-row>
+<ion-col>
+<ion-button type = "button" (click) = "addStudent()"
+color="primary" shape = "full" expand= "block">
+Add Student
+</ion-button>
+</ion-col>
+</ion-row>
+</ion-list>
+
+<ion-list>
+<ion-list-header>  
+   Student List
+</ion-list-header>
+  <ion-item lines = "inset" *ngFor="let student of students">
+    <ion-label>
+      <h5>{{student.year}} - ({{student.studentOne}}, {{student.studentTwo}})</h5>
+    </ion-label>
+    <div class="item-note">
+      
+    <ion-icon name = "create" style="zoom: 2.0;" [routerLink] = "['/update-student/',student.id]" routerLink></ion-icon> 
+    <ion-icon name = "trash" style="zoom: 2.0;" (click)= "deleteStudent(student.id)"></ion-icon>
+    </div>
+  </ion-item>
+</ion-list>
+</ion-content>
